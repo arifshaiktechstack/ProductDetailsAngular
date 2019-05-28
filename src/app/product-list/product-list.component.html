@@ -1,0 +1,64 @@
+<div id="content" class="container">
+
+
+
+    <div class="container">
+        <div class="well well-sm">
+            <strong>WSI Available Products</strong>
+
+        </div>
+
+
+        <div class="grid">
+
+            <div class="content">
+                <ul class="rig columns-3">
+                    <li *ngFor='let product of products' (click)="openModal(product)">
+                        <a href="#"><img class="product-image" [src]="product.heroImage.href"></a>
+                        <div style="height: 150px">
+                            <h5>{{product.name}}</h5>
+                            <p>{{product.name}}</p>
+                        </div>
+
+
+
+                        Price {{product.sellingPriceMin}}-{{product.sellingPriceMax}} $
+
+
+
+
+                    </li>
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+        <div class="modal-dialog">
+            <div class="modal-content" >
+                    <div class="container">
+                            <div class="modal-body">
+                            <div class="sliders" *ngIf="currentProduct">
+                                <ng-container *ngFor="let img of currentProduct.images; let i = index">
+                                    <div class="slider" *ngIf="current == i" @fade>
+                                            <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+                                                aria-hidden="true">&times;</span></button>  
+                                        <img class="img" [src]="img.href">
+    
+                                    </div>
+                                </ng-container>
+                            </div>
+                            </div>
+                        </div>  
+                  </div>
+            </div>
+        </div>
+    </div>
